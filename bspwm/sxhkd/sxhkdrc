@@ -1,0 +1,158 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM
+#################################################################
+
+###########################
+# wm independent hotkeys
+###########################
+
+# tilix
+alt + t
+	tilix
+
+# rofi program launcher
+alt + space
+	rofi -show drun -show-icons -columns 1 -lines 10 -width 20 -kb-cancel alt-space,Escape
+
+alt + Escape 
+	/home/martin/.config/bspwm/sxhkd/powermenu.sh
+
+# PCManFM
+alt + f
+	pcmanfm
+
+# firefox
+alt + w
+	firefox
+
+# atom
+alt + a
+	atom
+
+# discord
+alt + d
+	discord
+# audio
+alt + ctrl + 1
+	pacmd set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
+alt + ctrl + 2
+	pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo
+
+###########################
+# bspwm hotkeys
+###########################
+
+# close window
+alt + q
+	bspc node -c
+
+# move focused window to the next workspace and then switch to that workspace
+alt + shift + {Left,Right}
+	id=$(bspc query --nodes --node); bspc node --to-desktop {1-4}; bspc desktop --focus {1-4}; bspc node --focus ${id}
+
+alt + shift + {1-4}
+	id=$(bspc query --nodes --node); bspc node --to-desktop {1-4}; bspc desktop -f {1-4}; bspc node -f ${id}
+
+# === function keys ===
+
+# rotate windows
+alt + F1
+	bspc node @/ -R 90
+
+# circulate windows
+alt + F2
+	bspc node @/ -C forward
+
+# flip windows horizontal
+alt + F3
+	bspc node @/ -F horizontal
+
+# flip windows vertical
+alt + F4
+	bspc node @/ -F vertical
+
+# alternate between the tiled and monocle layout
+alt + F5
+	bspc desktop -l next
+
+# balance windows
+alt + F6
+	bspc node @/ -B
+
+# set the window state
+alt + {F9,F10,F11,F12}
+	bspc node -t {floating,tiled,pseudo_tiled,fullscreen}
+
+# === focus/swap ===
+
+# focus the next/previous node
+alt + ctrl + {Up,Down}
+	bspc node -f {prev,next}.local.!above
+
+# focus the next/previous desktop
+alt + {1-4}
+	bspc desktop -f {1-4}
+
+#screeenshooter
+Print
+	cd /home/martin/Descargas; import screenshoot.$(date +%Y-%m-%d_%H:%M:%S).png
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+#Pavucontrol
+ctrl + alt + 0
+	pavucontrol
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#################################################################
+# Restart Systems
+#################################################################
+
+#Reload bspwm
+alt + shift + r
+	~/.config/bspwm/bspwmrc
+
+# make sxhkd reload its configuration files
+alt + shift + Escape
+	pkill -USR1 -x sxhkd
+
+## super & mouse scroll
+
+# Focused desktop window gap
+super + button{4,5}
+  bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 2 ))
