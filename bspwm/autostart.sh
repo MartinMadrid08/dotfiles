@@ -9,6 +9,7 @@ function run {
 
 xrandr --output eDP1 --primary --mode 1366x768 --rotate normal --output HDMI1 --mode 1440x900 --rotate normal --right-of eDP1 &
 killall -q polybar &
+xinput disable 16 &
 
 feh --bg-fill /home/martin/Imágenes/walpaper.jpg &
 xsetroot -cursor_name left_ptr &

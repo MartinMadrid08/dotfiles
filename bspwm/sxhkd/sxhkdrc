@@ -47,11 +47,9 @@ alt + q
 	bspc node -c
 
 # move focused window to the next workspace and then switch to that workspace
-alt + shift + {Left,Right}
-	id=$(bspc query --nodes --node); bspc node --to-desktop {1-4}; bspc desktop --focus {1-4}; bspc node --focus ${id}
 
 alt + shift + {1-4}
-	id=$(bspc query --nodes --node); bspc node --to-desktop {1-4}; bspc desktop -f {1-4}; bspc node -f ${id}
+	id=$(bspc query --nodes --node); bspc node --to-desktop {1-4}; bspc node -f ${id}
 
 # === function keys ===
 
