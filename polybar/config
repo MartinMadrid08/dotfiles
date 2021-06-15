@@ -77,7 +77,7 @@ volume-max = #bf616a
 monitor = eDP1
 ;monitor-fallback = eDP1
 width = 100%
-height = 15
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -112,16 +112,16 @@ module-margin-left = 1
 module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "Noto Sans:size=10;0"
-font-1 = "FontAwesome:size=10;0"
-font-2 = "Noto Sans:size=10;0"
-font-3 = "Noto Sans Mono:size=10;0"
-font-4 = "Fantasque Sans Mono:pixelsize=12;0"
-font-5 = "Iosevka Nerd Font:pixelsize=12;1"
+font-0 = "Noto Sans:size=8;1"
+font-1 = "FontAwesome:size=8;1"
+font-2 = "Noto Sans:size=8;1"
+font-3 = "Noto Sans Mono:size=8;1"
+font-4 = "Fantasque Sans Mono:pixelsize=10;1"
+font-5 = "Iosevka Nerd Font:pixelsize=10;1"
 
-modules-left = bspwm memory2 cpu2
-modules-center = date
-modules-right = pulseaudio
+modules-left = memory2 cpu2
+modules-center = date sep bspwm sep clock
+modules-right = pulseaudio wired-network bluetooth
 
 ;tray-detached = false
 ;tray-offset-x = 0
@@ -139,7 +139,7 @@ modules-right = pulseaudio
 monitor = HDMI1
 ;monitor-fallback = eDP1
 width = 100%
-height = 15
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -174,22 +174,22 @@ module-margin-left = 1
 module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "Noto Sans:size=10;0"
-font-1 = "FontAwesome:size=13;0"
-font-2 = "Noto Sans:size=10;0"
-font-3 = "Noto Sans Mono:size=10;0"
-font-4 = "Fantasque Sans Mono:pixelsize=12;0"
-font-5 = "Iosevka Nerd Font:pixelsize=12;1"
+font-0 = "Noto Sans:size=8;1"
+font-1 = "FontAwesome:size=8;1"
+font-2 = "Noto Sans:size=8;1"
+font-3 = "Noto Sans Mono:size=8;1"
+font-4 = "Fantasque Sans Mono:pixelsize=10;1"
+font-5 = "Iosevka Nerd Font:pixelsize=10;1"
 
-modules-left = bspwm memory2 cpu2
-modules-center = date
-modules-right = pulseaudio
+modules-left = memory2 cpu2
+modules-center = date sep bspwm sep clock
+modules-right = pulseaudio wired-network bluetooth
 
 tray-position = right
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 1
+tray-padding = 2
 tray-maxsize = 20
 tray-scale = 1.0
 tray-background = ${colors.background}
@@ -315,7 +315,6 @@ bar-empty = ─
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
-battery = BAT0
 adapter = AC0
 full-at = 100
 
@@ -323,6 +322,7 @@ format-charging = <animation-charging> <label-charging>
 label-charging =  %percentage%%
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}
+battery = BAT0
 format-charging-underline = #a3c725
 
 format-discharging = <ramp-capacity> <label-discharging>
@@ -330,7 +330,6 @@ label-discharging =  %percentage%%
 format-discharging-underline = #c7ae25
 format-discharging-foreground = ${colors.foreground}
 format-discharging-background = ${colors.background}
-
 format-full-prefix = " "
 format-full-prefix-foreground = #a3c725
 format-full-underline = #a3c725
@@ -349,6 +348,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
+
 animation-charging-foreground = #a3c725
 animation-charging-framerate = 750
 
@@ -359,7 +359,6 @@ animation-charging-framerate = 750
 type = internal/cpu
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 1
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 ;   
@@ -436,7 +435,7 @@ format-padding = 0
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = %percentage:1%%
+label = %percentage%%
 
 ################################################################################
 
@@ -444,19 +443,33 @@ label = %percentage:1%%
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
 ; Seconds to sleep between updates
-interval = 5
+interval = 1
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = "%m-%d-%Y%"
-date-alt = "%d-%m-%Y"
-time = %H:%M
-time-alt = %H:%M
-format-prefix = ""
-format-prefix-foreground = #c1941a
-format-underline = #c1941a
+
+date = %m/%d/%Y%
+
+format-prefix = "ﮐ "
+format-prefix-foreground = #ffaa00
+format-underline = #ffaa00
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-label = %date%|%time%
+label = %date%
+
+[module/clock]
+;https://github.com/jaagr/polybar/wiki/Module:-date
+type = internal/date
+; Seconds to sleep between updates
+interval = 1
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+
+time = %H:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = #00ff9b
+format-underline = #00ff9b
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label = %time%
 
 #################################################################
 
@@ -558,6 +571,7 @@ format-mounted-underline = #fe0000
 ;   %fsname%
 ;   %percentage_free%
 ;   %percentage_used%
+;interval = 1
 ;   %total%
 ;   %free%
 ;   %used%
@@ -658,7 +672,7 @@ interval = 1
 ;   %mb_used%
 ;   %mb_free%
 ;   %mb_total%
-label = %percentage_used%%
+label = %percentage_used%% | %mb_used%
 
 format = <label>
 format-prefix = " "
@@ -731,7 +745,6 @@ format-connected-prefix = ""
 format-connected-prefix-foreground = #FE522C
 format-connected-foreground = ${colors.foreground}
 format-connected-background = ${colors.background}
-;format-connected-underline = #62FF00
 
 ################################################################################
 
@@ -748,6 +761,7 @@ format-connected-prefix = ""
 format-connected-prefix-foreground = #3EC13F
 format-connected-foreground = ${colors.foreground}
 format-connected-background = ${colors.background}
+;format-connected-underline = #62FF00
 ;format-connected-underline = #62FF00
 
 ################################################################################
@@ -829,7 +843,7 @@ format-underline = #62FF00
 [module/sep]
 ; alternative separator
 type = custom/text
-content = 
+content = " "
 content-foreground = ${colors.foreground}
 content-background =  ${colors.background}
 format-foreground = ${colors.foreground}
@@ -879,7 +893,6 @@ click-right = spotify
 type = custom/ipc
 hook-0 = echo ""
 hook-1 = echo ""
-initial = 1
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 click-left = playerctl play-pause spotify
@@ -887,6 +900,7 @@ click-right = spotify
 
 [module/spotify-next]
 type = custom/script
+initial = 1
 exec = echo ""
 format = <label>
 format-foreground = ${colors.foreground}
@@ -919,13 +933,13 @@ format-background = ${colors.background}
 format-underline = #c72581
 format-warn = <ramp> <label-warn>
 format-warn-underline = #c7254f
-label = %temperature%
 label-warn =  %temperature%
 label-warn-foreground = #c7254f
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
+label = %temperature%
 ramp-3 = 
 ramp-4 = 
 ramp-foreground =${colors.foreground}
@@ -1016,7 +1030,7 @@ label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 format-volume-underline = #62FF00
 format-volume-background = ${colors.background}
-format-volume-foreground = ${colors.foreground}
+format-volume-foreground = #62FF00
 
 label-muted = " Muted"
 label-muted-foreground = ${colors.foreground}
@@ -1026,7 +1040,7 @@ format-muted-background = ${colors.background}
 format-muted-foreground = ${colors.foreground}
 format-muted-underline = #62FF00
 
-click-right = pavucontrol
+click-right = pavucontrol &
 
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔
@@ -1069,9 +1083,9 @@ tail = true
 [module/wired-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = enp4s0
-;interface = enp14s0
-interval = 3.0
+;interface = enp4s0
+interface = eno1
+interval = 1.0
 
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
@@ -1082,20 +1096,20 @@ interval = 3.0
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected =  %ifname%
-label-disconnected = %ifname% disconnected
+label-connected = "%{A1:kitty nmtui:}%downspeed%%{A}"
 
+label-disconnected = "%{A1:kitty nmtui:}%ifname% disconnected%{A}"
 format-connected-foreground = ${colors.foreground}
 format-connected-background = ${colors.background}
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = #55aa55
+format-connected-underline = #e8ff00
+format-connected-prefix = "%{A1:kitty nmtui:} %{A}"
+format-connected-prefix-foreground = #e8ff00
 format-connected-prefix-background = ${colors.background}
 
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert}
+format-disconnected-underline = #ff0000
 label-disconnected-foreground = ${colors.foreground}
-
+label-disconnected-background = ${colors.background}
 ################################################################################
 
 [module/wireless-network]
@@ -1198,3 +1212,14 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 ###############################################################################
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetooth.sh
+interval = 1
+click-left = exec kitty sudo bluetoothctl &
+click-right = exec ~/.config/polybar/scripts/toggle_bluetooth.sh &
+format-padding = 0
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline = #2193ff
+#####################################################################

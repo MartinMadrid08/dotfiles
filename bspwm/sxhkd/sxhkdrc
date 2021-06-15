@@ -6,13 +6,13 @@
 # wm independent hotkeys
 ###########################
 
-# tilix
+# kitty
 alt + t
-	tilix
+	kitty
 
 # rofi program launcher
 alt + space
-	rofi -show drun -show-icons -columns 1 -lines 10 -width 20 -kb-cancel alt-space,Escape
+	rofi -show drun -columns 1 -lines 10 -width 20 -kb-cancel alt-space,Escape
 
 alt + Escape 
 	/home/martin/.config/bspwm/sxhkd/powermenu.sh
@@ -21,22 +21,28 @@ alt + Escape
 alt + f
 	pcmanfm
 
+alt + shift + f
+	gksudo pcmanfm
+
 # firefox
 alt + w
 	firefox
+
+# discord
+alt + d
+	discord-canary
 
 # atom
 alt + a
 	atom
 
-# discord
-alt + d
-	discord
 # audio
 alt + ctrl + 1
 	pacmd set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
 alt + ctrl + 2
 	pacmd set-default-sink alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo
+alt + ctrl + 3
+	pacmd set-default-sink bluez_sink.74_45_CE_45_78_F3.a2dp_sink
 
 ###########################
 # bspwm hotkeys
