@@ -31,7 +31,7 @@ compositing-border = over
 format-foreground = #FF0000
 format-background = #00FF00
 format-underline =
-format-overline =
+format-overline = 
 format-spacing =
 format-padding =
 format-margin =
@@ -39,7 +39,7 @@ format-offset =
 
 [colors]
 ; Nord theme ============
-background = #002F343F
+background = #00000000
 foreground = #f3f4f5
 alert = #d08770
 volume-min = #a3be8c
@@ -108,8 +108,8 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0
+module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 font-0 = "Noto Sans:size=8;1"
@@ -119,9 +119,9 @@ font-3 = "Noto Sans Mono:size=8;1"
 font-4 = "Fantasque Sans Mono:pixelsize=10;1"
 font-5 = "Iosevka Nerd Font:pixelsize=10;1"
 
-modules-left = memory2 cpu2
-modules-center = date sep bspwm sep clock
-modules-right = pulseaudio wired-network bluetooth
+modules-left = memory2 sepB sepB cpu2 sepB sepL
+modules-center = sepR sepB date sepB sepB bspwm sepB sepB clock sepB sepL
+modules-right = sepR sepB pulseaudio sepB sepB wired-network sepB sepB bluetooth
 
 ;tray-detached = false
 ;tray-offset-x = 0
@@ -170,8 +170,8 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0
+module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 font-0 = "Noto Sans:size=8;1"
@@ -181,9 +181,9 @@ font-3 = "Noto Sans Mono:size=8;1"
 font-4 = "Fantasque Sans Mono:pixelsize=10;1"
 font-5 = "Iosevka Nerd Font:pixelsize=10;1"
 
-modules-left = memory2 cpu2
-modules-center = date sep bspwm sep clock
-modules-right = pulseaudio wired-network bluetooth
+modules-left = memory2 sepB sepB cpu2 sepB sepL
+modules-center = sepR sepB date sepB sepB bspwm sepB sepB clock sepB sepL
+modules-right = sepR sepB pulseaudio sepB sepB wired-network sepB sepB bluetooth
 
 tray-position = right
 tray-detached = false
@@ -213,7 +213,7 @@ enable-scroll = false
 reverse-scroll = false
 
 label-focused = %name%
-label-focused-background = ${colors.background}
+label-focused-background = #000000
 label-focused-foreground = ${colors.foreground}
 label-focused-padding = 3
 label-focused-underline = #9b00ff 
@@ -221,15 +221,15 @@ label-focused-underline = #9b00ff
 label-occupied = %name%
 label-occupied-padding = 3
 label-occupied-foreground = #ce009a
-label-occupied-background = ${colors.background}
+label-occupied-background = #000000
 
 label-urgent = %name%
-label-urgent-background = ${colors.background}
+label-urgent-background = #000000
 label-urgent-padding = 3
 
 label-empty = %name%
 label-empty-foreground = ${colors.foreground}
-label-empty-background = ${colors.background}
+label-empty-background = #000000
 label-empty-padding = 3
 
 ; Separator in between workspaces
@@ -415,7 +415,7 @@ type = internal/cpu
 ; Default: 1
 interval = 1
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = #000000
 format-prefix = "﬙ "
 format-prefix-foreground = #cd1f3f
 format-underline = #cd1f3f
@@ -452,7 +452,7 @@ format-prefix = "ﮐ "
 format-prefix-foreground = #ffaa00
 format-underline = #ffaa00
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = #000000
 label = %date%
 
 [module/clock]
@@ -468,7 +468,7 @@ format-prefix = " "
 format-prefix-foreground = #00ff9b
 format-underline = #00ff9b
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = #000000
 label = %time%
 
 #################################################################
@@ -679,7 +679,7 @@ format-prefix = " "
 format-prefix-foreground = #3384d0
 format-underline = #3384d0
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = #000000
 
 ################################################################################
 
@@ -841,7 +841,6 @@ format-underline = #62FF00
 ################################################################################
 
 [module/sep]
-; alternative separator
 type = custom/text
 content = " "
 content-foreground = ${colors.foreground}
@@ -1029,15 +1028,15 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 format-volume-underline = #62FF00
-format-volume-background = ${colors.background}
+format-volume-background = #000000
 format-volume-foreground = #62FF00
 
 label-muted = " Muted"
 label-muted-foreground = ${colors.foreground}
-label-muted-background = ${colors.background}
+label-muted-background = #000000
 format-muted-prefix = 婢
-format-muted-background = ${colors.background}
-format-muted-foreground = ${colors.foreground}
+format-muted-background = #000000
+format-muted-foreground = #62FF00
 format-muted-underline = #62FF00
 
 click-right = pavucontrol &
@@ -1100,16 +1099,16 @@ label-connected = "%{A1:kitty nmtui:}%downspeed%%{A}"
 
 label-disconnected = "%{A1:kitty nmtui:}%ifname% disconnected%{A}"
 format-connected-foreground = ${colors.foreground}
-format-connected-background = ${colors.background}
+format-connected-background = #000000
 format-connected-underline = #e8ff00
 format-connected-prefix = "%{A1:kitty nmtui:} %{A}"
 format-connected-prefix-foreground = #e8ff00
-format-connected-prefix-background = ${colors.background}
+format-connected-prefix-background = #000000
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = #ff0000
 label-disconnected-foreground = ${colors.foreground}
-label-disconnected-background = ${colors.background}
+label-disconnected-background = #000000
 ################################################################################
 
 [module/wireless-network]
@@ -1219,7 +1218,30 @@ interval = 1
 click-left = exec kitty sudo bluetoothctl &
 click-right = exec ~/.config/polybar/scripts/toggle_bluetooth.sh &
 format-padding = 0
-format-background = ${colors.background}
+format-background = #000000
 format-foreground = ${colors.foreground}
 format-underline = #2193ff
 #####################################################################
+[module/sepL]
+type = custom/text
+content = ""
+content-foreground = #000000
+content-background =  ${colors.background}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+###############################################################################
+[module/sepR]
+type = custom/text
+content = ""
+content-foreground = #000000
+content-background =  ${colors.background}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+#############################################################################
+[module/sepB]
+type = custom/text
+content = " "
+content-foreground = #000000
+content-background =  #000000
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
