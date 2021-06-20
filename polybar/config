@@ -192,7 +192,7 @@ tray-offset-y = 0
 tray-padding = 2
 tray-maxsize = 20
 tray-scale = 1.0
-tray-background = ${colors.background}
+tray-background = #000000
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -206,31 +206,35 @@ tray-background = ${colors.background}
 [module/bspwm]
 type = internal/bspwm
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+
 inline-mode = false
 pin-workspaces = false
 enable-click = false
 enable-scroll = false
 reverse-scroll = false
 
-label-focused = %name%
+label-focused = 
 label-focused-background = #000000
 label-focused-foreground = ${colors.foreground}
-label-focused-padding = 3
-label-focused-underline = #9b00ff 
+label-focused-padding = 2
 
-label-occupied = %name%
-label-occupied-padding = 3
+label-occupied = 
+label-occupied-padding = 2
 label-occupied-foreground = #ce009a
 label-occupied-background = #000000
 
-label-urgent = %name%
+label-urgent = %icon%
 label-urgent-background = #000000
-label-urgent-padding = 3
+label-urgent-padding = 2
 
-label-empty = %name%
+label-empty = %icon%
 label-empty-foreground = ${colors.foreground}
 label-empty-background = #000000
-label-empty-padding = 3
+label-empty-padding = 2
 
 ; Separator in between workspaces
 ;label-separator = |
