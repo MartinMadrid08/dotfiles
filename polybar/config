@@ -206,10 +206,10 @@ tray-background = #000000
 [module/bspwm]
 type = internal/bspwm
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
+ws-icon-0 = 1;祿
+ws-icon-1 = 2;祿
+ws-icon-2 = 3;祿
+ws-icon-3 = 4;祿
 
 inline-mode = false
 pin-workspaces = false
@@ -217,12 +217,12 @@ enable-click = false
 enable-scroll = false
 reverse-scroll = false
 
-label-focused = 
+label-focused = 綠
 label-focused-background = #000000
 label-focused-foreground = ${colors.foreground}
 label-focused-padding = 2
 
-label-occupied = 
+label-occupied = 祿
 label-occupied-padding = 2
 label-occupied-foreground = #ce009a
 label-occupied-background = #000000
